@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="aptitude-test">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" href="/css/styles.css" media="screen" title="no title" charset="utf-8">
+    <title>aptitude-test</title>
+  </head>
+  <body ng-controller='mainCtrl'>
+    <div id='youtube'>
+      <div class='top'>
+          <div id="buttons">
+            <label> <input id="query" type="text" ng-model='search' placeholder="search YouTube"/><button id="search-button"  ng-click='getVideos(search)'>Search</button></label>
+          </div>
+      </div>
+          <div id='search-container'>
+              <div id="thumbnails" ng-repeat='video in videos'>
+                <img src= {{video.snippet.thumbnails.medium.url}} ng-click='playVideo(video.id.videoId)'>
+                <h5 ng-click='playVideo(video.id.videoId)'>{{video.snippet.title}}</h5>
+                <p>{{video.snippet.channelTitle}}</p>
+              </div>
+          </div>
+          <iframe id='video' width="900" height='550px'
+            src='{{trustSrc(videoId)}}'>
+          </iframe>
+    </div>
+
+
+    <div class='language-container'>
+      <div class='third'>
+          <h1> Javascript </h1>
+          <div id='languages' ng-repeat='poo in response'>
+            <p>{{poo.language}}</p>
+          </div>
+      </div>
+
+      <div class='third'>
+          <h1> Angular </h1>
+          <div id='languages' ng-repeat='language in languages'>
+            <p>{{language.language}}</p>
+          </div>
+      </div>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+  <!--ANGULAR ANGULAR -->
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/mainCtrl.js"></script>
+  <script src="js/mainService.js"></script>
+  </body>
+</html>
